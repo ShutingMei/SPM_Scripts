@@ -1,13 +1,6 @@
 function matlabbatch = Batch_2ndLevel(Datapath, Savepath, Conname, Design)
 %% 2nd Level                                          Shuting Mei
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Before this step, you must run 1st level analysis, and generate con files
-% at least FOUR subjects to conduct the 2nd level analysis.
-%
-% Please note that the order of the con file would be consistent with your 
-% 1st level analysis. e.g. in my Experiment, con_0001 means the Self-Friend
-% condition.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% fMRI model specification
 matlabbatch{1}.spm.stats.factorial_design.dir = {Savepath};
 volumes = spm_select('List',Datapath,Conname);  %ExtList for 4D; List for 3D
@@ -35,3 +28,9 @@ matlabbatch{3}.spm.stats.con.consess{1}.tcon.weights = Design.weights;
 matlabbatch{3}.spm.stats.con.consess{1}.tcon.sessrep = 'repl';
 matlabbatch{3}.spm.stats.con.delete = 0;
 end
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Author:
+%
+%   (c) 21-Aug-2021 Shuting Mei
+%   contact: Meishuting@stu.pku.edu.cn
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
