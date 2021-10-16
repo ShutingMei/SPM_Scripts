@@ -1,15 +1,6 @@
 function matlabbatch = Batch_1stLevel(Funcpath,Savepath, SPMpath, Design)
 %% 1st Level                                          Shuting Mei
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Firstly, please note that you must prepare files for first level analysis,
-% including functional data (swa.nii), onset data, and headmotion data 
-% (rp.txt) for regression (these files would be generated in PreProc).
-% 
-% Secondly, please think about your experimental design. How many
-% conditions in your experiment? How long each condition last in each
-% trial? What effects do you want to explore? Main effect? Interaction
-% effect? So the design matrix is?
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 run = length(Funcpath);
 matlabbatch{1}.cfg_basicio.file_dir.dir_ops.cfg_cd.dir = {Savepath};
 %% Prepare files
@@ -73,14 +64,6 @@ for ci = 1:length(Design.name)
     matlabbatch{5}.spm.stats.con.consess{ci}.tcon.weights = Design.weights{ci};
     matlabbatch{5}.spm.stats.con.consess{ci}.tcon.sessrep = 'replsc';    
 end
-% matlabbatch{5}.spm.stats.con.consess{1}.tcon.name = 'Self-Friend';
-% matlabbatch{5}.spm.stats.con.consess{1}.tcon.weights = [1 -1];
-% matlabbatch{5}.spm.stats.con.consess{1}.tcon.sessrep = 'replsc';
-% 
-% matlabbatch{5}.spm.stats.con.consess{2}.tcon.name = 'Friend-Self';
-% matlabbatch{5}.spm.stats.con.consess{2}.tcon.weights = [-1 1];
-% matlabbatch{5}.spm.stats.con.consess{2}.tcon.sessrep = 'replsc';
-
 matlabbatch{5}.spm.stats.con.delete = 1;
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
